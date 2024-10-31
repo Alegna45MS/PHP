@@ -1,0 +1,28 @@
+#botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+fieldset {
+    margin-bottom: 10px;
+}
+
+fieldset div {
+    margin: 5px;
+}
+
+#campoObligatorio,
+#mensajeError {
+    color: red;
+}
+
+#mensajeError {
+    font-style: italic;
+}
