@@ -21,10 +21,14 @@
         if (isset($_POST['registro'])) {
             $nuevoNombre = $_POST['nombre'];
             $nuevaContrasena = $_POST['contrasena'];
-            // Agregar el nuevo usuario y guardar
-            $usuarios[$nuevoNombre] = password_hash($nuevaContrasena, PASSWORD_DEFAULT);
-            file_put_contents(RUTA_FICHERO, serialize($usuarios));
-            echo "<p>Usuario registrado exitosamente. Ahora puedes iniciar sesión.</p>";
+            if (array_key_exists($nuevoNombre, $usuarios)) {
+                echo "<p style='color: red;'>El nombre de usuario ya existe. Por favor elige otro.</p>";
+            } else {
+                // Agregar el nuevo usuario y guardar
+                $usuarios[$nuevoNombre] = password_hash($nuevaContrasena, PASSWORD_DEFAULT);
+                file_put_contents(RUTA_FICHERO, serialize($usuarios));
+                echo "<p>Usuario registrado exitosamente. Ahora puedes iniciar sesión.</p>";
+            }
         }
         ?>
 
@@ -40,4 +44,3 @@
         <a href="inicioSesion3.php">Volver a iniciar sesion</a>
     </form>
 </body>
-</html>
